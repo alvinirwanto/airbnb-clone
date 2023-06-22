@@ -6,7 +6,6 @@ import { BiDollar } from "react-icons/bi"
 import { RiInformationLine } from 'react-icons/ri'
 import {HiOutlineEye, HiOutlineEyeSlash} from 'react-icons/hi2'
 
-
 type InputProps = {
     id: string
     label: string
@@ -61,7 +60,7 @@ export default function Input({
                 `
                 }
             />
-            <label className={`absolute text-md duration-150 transform -translate-y-1 top-3.5 z-10 origin-[0]
+            <label htmlFor={id} className={`absolute text-md duration-150 transform -translate-y-1 top-3.5 z-10 origin-[0]
             peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
             peer-[&:not(:placeholder-shown)]:scale-75 
             peer-focus:scale-75
