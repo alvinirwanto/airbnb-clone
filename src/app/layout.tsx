@@ -5,7 +5,7 @@ import { Nunito } from 'next/font/google'
 import ToasterProvider from './providers/ToasterProvider'
 import LoginModal from './components/modal/LoginModal'
 import getCurrentUser from './actions/getCurrentUser'
-import { useSession } from 'next-auth/react'
+import ClientOnly from './components/ClientOnly'
 
 const nunito = Nunito({ subsets: ['latin'] })
 
@@ -25,11 +25,15 @@ export default async function RootLayout({
     return (
         <html lang="en">
             <body className={nunito.className}>
-                <ToasterProvider />
-                <Navbar currentUser={currentUser} />
-                <LoginModal />
-                <RegisterModal />
-                {children}
+                <ClientOnly>
+                    <ToasterProvider />
+                    <Navbar currentUser={currentUser} />
+                    <LoginModal />
+                    <RegisterModal />
+                </ClientOnly>
+                <div className="pb-20 pt-28">
+                    {children}
+                </div>
             </body>
         </html>
     )
