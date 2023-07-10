@@ -1,5 +1,6 @@
 'use client'
 
+import { IconType } from "react-icons"
 import ProcessLoading from "./ProcessLoading"
 
 type ButtonProps = {
@@ -8,6 +9,7 @@ type ButtonProps = {
     disabled?: boolean
     outline?: boolean
     small?: boolean
+    icon?: IconType
 }
 
 export default function Button({ label, onClick, disabled, outline, small, icon: Icon }: ButtonProps) {
