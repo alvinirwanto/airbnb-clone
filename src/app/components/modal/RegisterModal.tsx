@@ -3,7 +3,7 @@
 import axios from "axios"
 import { AiFillGithub } from "react-icons/ai"
 import { FcGoogle } from 'react-icons/fc'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 
 import {
     FieldValues,
@@ -11,7 +11,7 @@ import {
     useForm
 } from 'react-hook-form'
 
-import useRegisterModal from "@/app/hooks/useRegisterModal"
+
 import Modal from "./Modal"
 import Heading from "../Heading"
 import Input from "../input/Input"
@@ -23,6 +23,9 @@ import { toast } from 'react-hot-toast'
 import Button from "../Button"
 
 import { signIn } from "next-auth/react"
+
+import useRegisterModal from "@/app/hooks/useRegisterModal"
+import useLoginModal from "@/app/hooks/useLoginModal"
 
 
 const schema = z.object({
@@ -42,6 +45,7 @@ const schema = z.object({
 
 export default function RegisterModal() {
     const registerModal = useRegisterModal()
+    const loginModal = useLoginModal()
     const [isLoading, setIsLoading] = useState(false)
 
     const {
@@ -76,6 +80,11 @@ export default function RegisterModal() {
                 setIsLoading(false)
             })
     }
+
+    const toggle = useCallback(() => {
+        registerModal.onClose()
+        loginModal.onOpen()
+    }, [loginModal, registerModal])
 
     const bodyContent = (
         <div className="flex flex-col gap-4">
@@ -153,7 +162,7 @@ export default function RegisterModal() {
                         Already have an account?
                     </div>
                     <div
-                        onClick={registerModal.onClose}
+                        onClick={toggle}
                         className="text-rose-500 font-semibold cursor-pointer hover:underline"
                     >
                         Log in

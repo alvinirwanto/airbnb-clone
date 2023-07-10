@@ -44,12 +44,12 @@ export const authOptions: AuthOptions = {
           user.hashedPassword
         );
 
-        // If an existing user with the same email is found, throw an error
-        if (user) {
-          throw new Error(
-            "Duplicate email found. Please use a unique email address."
-          );
-        }
+        // // If an existing user with the same email is found, throw an error
+        // if (user) {
+        //   throw new Error(
+        //     "Duplicate email found. Please use a unique email address."
+        //   );
+        // }
 
         if (!isCorrectPassword) {
           throw new Error("Invalid credentials");
