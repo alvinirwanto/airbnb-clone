@@ -8,7 +8,6 @@ type ButtonProps = {
     disabled?: boolean
     outline?: boolean
     small?: boolean
-    icon?: boolean
 }
 
 export default function Button({ label, onClick, disabled, outline, small, icon: Icon }: ButtonProps) {
