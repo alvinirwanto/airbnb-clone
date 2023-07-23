@@ -16,7 +16,7 @@ import {
 import useRegisterModal from "@/app/hooks/useRegisterModal"
 import Modal from "./Modal"
 import Heading from "../Heading"
-import Input from "../input/Input"
+import Input from "../inputs/Input"
 
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'

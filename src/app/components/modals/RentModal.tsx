@@ -5,14 +5,15 @@ import Modal from "./Modal";
 import { useMemo, useState } from "react";
 import Heading from "../Heading";
 import { categories } from "../navbar/Categories";
-import CategoryInput from "../input/CategoryInput";
+import CategoryInput from "../inputs/CategoryInput";
 
 import {
     FieldValues,
     SubmitHandler,
     useForm
 } from 'react-hook-form'
-import CountrySelect from "../input/CountrySelect";
+import CountrySelect from "../inputs/CountrySelect";
+import dynamic from "next/dynamic";
 
 enum STEPS {
     CATEGORY = 0,
@@ -54,6 +55,11 @@ export default function RentModal() {
 
     // Because the input is map using another components, so it have to use watch to get the data
     const category = watch('category')
+    const location = watch('location')
+
+    const Map = useMemo(() => dynamic(() => import('../Map'), {
+        ssr: false
+    }), [location])
 
     // Because the setValue from the react-hook-form by default set the value but did not re-renders the page, so we have to modify it
     const setCustomValue = (id: string, value: any) => {
@@ -120,8 +126,10 @@ export default function RentModal() {
                 />
 
                 <CountrySelect
-                    
+                    value={location}
+                    onChange={(value) => setCustomValue('location', value)}
                 />
+                <Map center={location?.latlng} />
             </div>
         )
     }
