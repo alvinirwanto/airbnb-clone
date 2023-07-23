@@ -57,12 +57,14 @@ export default function Modal({
 
     const handleSecondaryAction = useCallback(() => {
         if (disabled || !secondaryAction) {
-            return
+            return;
         }
-    }, [disabled, secondaryAction])
+
+        secondaryAction();
+    }, [secondaryAction, disabled]);
 
     if (!isOpen) {
-        return null
+        return null;
     }
 
     return (
