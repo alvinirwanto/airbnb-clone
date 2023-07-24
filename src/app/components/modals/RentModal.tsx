@@ -49,17 +49,17 @@ export default function RentModal() {
             imageSrc: '',
             price: 1,
             title: '',
-            description: ''
+            description: '',
         }
     })
 
     // Because the input is map using another components, so it have to use watch to get the data
-    const category = watch('category')
-    const location = watch('location')
+    const location = watch('location');
+    const category = watch('category');
 
     const Map = useMemo(() => dynamic(() => import('../Map'), {
         ssr: false
-    }), [location])
+    }), [location]);
 
     // Because the setValue from the react-hook-form by default set the value but did not re-renders the page, so we have to modify it
     const setCustomValue = (id: string, value: any) => {
@@ -119,19 +119,18 @@ export default function RentModal() {
 
     if (step === STEPS.LOCATION) {
         bodyContent = (
-            <div className='flex flex-col gap-8'>
+            <div className="flex flex-col gap-8">
                 <Heading
                     title="Where is your place located?"
-                    subtitle="Help guest find you!"
+                    subtitle="Help guests find you!"
                 />
-
                 <CountrySelect
                     value={location}
                     onChange={(value) => setCustomValue('location', value)}
                 />
                 <Map center={location?.latlng} />
             </div>
-        )
+        );
     }
 
     return (
