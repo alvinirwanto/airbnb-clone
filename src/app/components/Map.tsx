@@ -22,10 +22,10 @@ type MapProps = {
 
 const url = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
 
-export default function ({ center }: MapProps) {
+export default function Map ({ center }: MapProps) {
     return (
         <MapContainer
-            center={center as L.LatLngExpression || [51, -0.09]}
+            center={center as L.LatLngExpression || [-6.200000, 106.816666]}
             zoom={center ? 4 : 2}
             scrollWheelZoom={false}
             className="h-[35vh] rounded-lg"
