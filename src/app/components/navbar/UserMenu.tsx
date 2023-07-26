@@ -41,7 +41,7 @@ export default function UserMenu({ currentUser }: UserMenuProps) {
 
         // Open rent modal
         rentModal.onOpen()
-    }, [])
+    }, [loginModal, rentModal, currentUser])
 
     return (
         <div className='relative justify-self-end'>

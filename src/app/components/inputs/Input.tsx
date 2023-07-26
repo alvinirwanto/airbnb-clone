@@ -41,7 +41,7 @@ export default function Input({
             {
                 formatPrice && (
                     <BiDollar
-                        size={24}
+                        size={23}
                         className="text-neutral-700 absolute top-5 left-2"
                     />
                 )
@@ -72,11 +72,6 @@ export default function Input({
                 {label}
             </label>
 
-            {/* {
-                type === 'password' && (
-                    <RiEyeLine size={25} className="absolute top-3 right-4" />
-                )
-            } */}
             {type === 'password' && (
                 <button
                     type="button"

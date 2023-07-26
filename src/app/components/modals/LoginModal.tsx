@@ -35,6 +35,7 @@ const schema = z.object({
         .regex(/^(?=.*[0-9a-zA-Z])(?=.*[@#$%^&+=*!]).*$/, 'Password must contain at least one number, one alphabet character, and one special character'),
     // z.string().nonempty('This field is required').min(6, { message: "Password must be atleast 6 characters" }),
 })
+
 export default function LoginModal() {
     const router = useRouter()
 
